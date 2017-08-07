@@ -1,4 +1,4 @@
-package paho;
+package com.demos.paho;
 
 import lombok.extern.log4j.Log4j;
 import org.eclipse.paho.client.mqttv3.MqttClient;
@@ -18,7 +18,7 @@ public class PahoProducer {
         String topic        = "topic1";
         String content      = "Kidd 消息推送3";
         int qos             = 2;
-        String broker       = "tcp://localhost:61613";
+        String broker       = "tcp://192.168.2.140:1883";
         String clientId     = "JavaClient1";
         MemoryPersistence persistence = new MemoryPersistence();
 
@@ -27,7 +27,7 @@ public class PahoProducer {
             MqttConnectOptions connectOptions = new MqttConnectOptions();
             connectOptions.setCleanSession(false);
             connectOptions.setUserName("admin");
-            connectOptions.setPassword("password".toCharArray());
+            connectOptions.setPassword("admin".toCharArray());
             log.info("connecting to broker: " + broker);
             client.connect(connectOptions);
             log.info("connected");

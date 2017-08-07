@@ -1,4 +1,4 @@
-package activeMq;
+package com.demos.activeMQ.def;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.activemq.ActiveMQConnection;
@@ -26,6 +26,7 @@ public class Consumer {
 
         try {
             connection = connectionFactory.createConnection();
+            connection.setClientID("client1");
             connection.start();
             session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
 //            destination = session.createQueue("KiddQueue");
