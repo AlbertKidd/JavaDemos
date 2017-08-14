@@ -7,6 +7,12 @@
         <Console name="Console" target="SYSTEM_OUT">
             <PatternLayout pattern="%d{HH:mm:ss} [%t] %-5level %logger{36} ${kidd:a} - %msg%n"/>
         </Console>
+        <JDBC name="DatabaseAppender" tableName="log">
+            <ConnectionFactory class="com.demos.log4j.LogConnectionFactory"
+                               method="getDatabaseConnection"/>
+            <Column name="log_time" pattern="%d{HH:mm:ss}"/>
+            <Column name="log_msg" pattern="%msg"/>
+        </JDBC>
         <RollingRandomAccessFile name="simpleLogFile" fileName="${LOG_HOME}/simple.log"
             filePattern="${LOG_HOME}/simple-%d{yyyy.MM.dd HH-mm-ss}-%i.log">
             <PatternLayout pattern="%d{HH:mm:ss} [%t] %-5level %logger{36} - %msg%n"/>
@@ -28,6 +34,7 @@
         </Root>
         <Logger name="com.demo.kidd.log4j2.Log4j2Demo" level="trace" additivity="false">
             <AppenderRef ref="Console"/>
+            <AppenderRef ref="DatabaseAppender"/>
             <AppenderRef ref="simpleLogFile"/>
         </Logger>
     </Loggers>
