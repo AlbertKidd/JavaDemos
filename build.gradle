@@ -6,14 +6,21 @@ version = '1.0-SNAPSHOT'
 
 description = """"""
 
-sourceCompatibility = 1.5
-targetCompatibility = 1.5
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
 
 
 
 repositories {
-        
-     maven { url "http://ebig-nexus:8081/nexus/content/groups/public/" }
+//     jcenter()
+
+     maven {
+         credentials {
+             username "$mavenUser"
+             password "$mavenPassword"
+         }
+         url "http://ebig-nexus:8081/nexus/content/groups/public/"
+     }
      maven { url "https://repo.eclipse.org/content/repositories/paho-releases/" }
      maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
 
@@ -21,6 +28,8 @@ repositories {
 }
 
 dependencies {
+    compile 'org.codehaus.groovy:groovy:2.4.9'
+
     compile group: 'org.springframework', name: 'spring-context', version:'4.3.10.RELEASE'
     compile group: 'org.springframework', name: 'spring-aop', version:'4.3.10.RELEASE'
     compile(group: 'org.apache.activemq', name: 'activemq-all', version:'5.15.0') {
@@ -44,4 +53,5 @@ dependencies {
     compile group: 'org.aspectj', name: 'aspectjweaver', version:'1.7.4'
     compile group: 'net.sf.json-lib', name: 'json-lib', version:'2.4', classifier:"jdk15"
     compile group: 'junit', name: 'junit', version:'4.11'
+    compile group: 'com.ebig.ebeit', name:'ebeit-framework', version:'1.0-SNAPSHOT'
 }
