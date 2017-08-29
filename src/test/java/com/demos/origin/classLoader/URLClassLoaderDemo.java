@@ -1,11 +1,10 @@
 package com.demos.origin.classLoader;
 
+import lombok.extern.log4j.Log4j2;
 import org.junit.Test;
 
 import java.io.File;
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLClassLoader;
 
@@ -13,6 +12,7 @@ import java.net.URLClassLoader;
  * @author Kidd
  *         CreateTime 2017/8/19.
  */
+@Log4j2
 public class URLClassLoaderDemo {
 
     @Test
@@ -25,18 +25,8 @@ public class URLClassLoaderDemo {
             Object instance = classLog4j2Demo.newInstance();
             Method funcSimpleLog = classLog4j2Demo.getDeclaredMethod("simpleLog", null);
             funcSimpleLog.invoke(instance, null);
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-        } catch (NoSuchMethodException e) {
-            e.printStackTrace();
-        } catch (InvocationTargetException e) {
-            e.printStackTrace();
+        } catch (Exception e) {
+            log.error(e);
         }
     }
 }
