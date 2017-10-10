@@ -6,8 +6,8 @@ version = '1.0-SNAPSHOT'
 
 description = """"""
 
-sourceCompatibility = 1.5
-targetCompatibility = 1.5
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
 
 
 
@@ -43,5 +43,6 @@ dependencies {
     compile group: 'com.github.vatbub', name: 'mslinks', version:'1.0.3.1'
     compile group: 'org.aspectj', name: 'aspectjweaver', version:'1.7.4'
     compile group: 'net.sf.json-lib', name: 'json-lib', version:'2.4', classifier:"jdk15"
+    compile group: 'com.thoughtworks.xstream', name: 'xstream', version: '1.4.10'
     compile group: 'junit', name: 'junit', version:'4.11'
 }

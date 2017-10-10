@@ -29,7 +29,7 @@
         </RollingRandomAccessFile>
     </Appenders>
     <Loggers>
-        <Root level="error">
+        <Root level="debug">
             <AppenderRef ref="Console"/>
         </Root>
         <Logger name="com.demo.kidd.log4j2.Log4j2Demo" level="trace" additivity="false">
