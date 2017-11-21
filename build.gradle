@@ -45,4 +45,5 @@ dependencies {
     compile group: 'net.sf.json-lib', name: 'json-lib', version:'2.4', classifier:"jdk15"
     compile group: 'com.thoughtworks.xstream', name: 'xstream', version: '1.4.10'
     compile group: 'junit', name: 'junit', version:'4.11'
+    compile group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.3'
 }
