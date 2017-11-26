@@ -53,5 +53,7 @@ dependencies {
     compile group: 'org.aspectj', name: 'aspectjweaver', version:'1.7.4'
     compile group: 'net.sf.json-lib', name: 'json-lib', version:'2.4', classifier:"jdk15"
     compile group: 'junit', name: 'junit', version:'4.11'
-    compile group: 'com.ebig.ebeit', name:'ebeit-framework', version:'1.0-SNAPSHOT'
+    compile group: 'com.ebig.ebeit', name:'ebeit-framework', version:'1.0.0'
+    compile group: 'org.eclipse.jetty', name: 'jetty-webapp', version: '9.4.7.v20170914'
+
 }
