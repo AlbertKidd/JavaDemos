@@ -12,8 +12,15 @@ targetCompatibility = 1.8
 
 
 repositories {
-        
-     maven { url "http://ebig-nexus:8081/nexus/content/groups/public/" }
+//     jcenter()
+
+     maven {
+         credentials {
+             username "$mavenUser"
+             password "$mavenPassword"
+         }
+         url "http://ebig-nexus:8081/nexus/content/groups/public/"
+     }
      maven { url "https://repo.eclipse.org/content/repositories/paho-releases/" }
      maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
 
@@ -21,6 +28,8 @@ repositories {
 }
 
 dependencies {
+    compile 'org.codehaus.groovy:groovy:2.4.9'
+
     compile group: 'org.springframework', name: 'spring-context', version:'4.3.10.RELEASE'
     compile group: 'org.springframework', name: 'spring-aop', version:'4.3.10.RELEASE'
     compile(group: 'org.apache.activemq', name: 'activemq-all', version:'5.15.0') {
