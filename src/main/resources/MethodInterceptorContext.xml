@@ -9,14 +9,14 @@
 
     <!--<aop:aspectj-autoproxy/>-->
 
-    <bean id="customAspect" class="com.demos.aspectj.CustomAspect"/>
+    <bean id="customAspect" class="com.kidd.demos.aspectj.CustomAspect"/>
 
     <!--<aop:config>-->
         <!--<aop:pointcut id="methodPoint" expression="execution(public * *(..))"/>-->
         <!--<aop:advisor advice-ref="methodTimeWrapper" pointcut="execution(public * *(..))"/>-->
     <!--</aop:config>-->
 
-    <bean id="methodTimeWrapper" class="com.demos.spring.MethodTimeWrapper"/>
+    <bean id="methodTimeWrapper" class="com.kidd.demos.spring.MethodTimeWrapper"/>
     <!--<bean id="interceptorProxyCreator" class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">-->
         <!--<property name="interceptorNames">-->
             <!--<list>-->
@@ -27,6 +27,6 @@
             <!--<value>initBean</value>-->
         <!--</property>-->
     <!--</bean>-->
-    <bean id="initBean" class="com.demos.spring.InitBean"/>
+    <bean id="initBean" class="com.kidd.demos.spring.InitBean"/>
 
 </beans>
