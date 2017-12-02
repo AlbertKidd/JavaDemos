@@ -1,10 +1,11 @@
-apply plugin: 'java'
-apply plugin: 'maven'
+plugins {
+    id 'org.springframework.boot' version '1.5.9.RELEASE'
+    id 'java'
+    id 'maven'
+}
 
 group = 'kidd'
 version = '1.0-SNAPSHOT'
-
-description = ""
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
@@ -25,9 +26,9 @@ repositories {
 }
 
 dependencies {
-    compile("org.springframework.boot:spring-boot-starter-web:1.5.9.RELEASE")
     compile("org.springframework.boot:spring-boot-starter-web")
-    compile("org.springframework.boot:spring-boot-starter-activemq:1.5.9.RELEASE")
+    compile("org.springframework.boot:spring-boot-starter-activemq")
+    compile("org.springframework.boot:spring-boot-starter-websocket")
     compile 'org.codehaus.groovy:groovy:2.4.9'
     compile group: 'org.apache.activemq', name: 'activemq-core', version:'5.7.0'
     compile group: 'org.projectlombok', name: 'lombok', version:'1.14.8'
