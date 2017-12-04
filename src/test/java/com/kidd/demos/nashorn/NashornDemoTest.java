@@ -2,8 +2,8 @@ package com.kidd.demos.nashorn;
 
 import jdk.nashorn.api.scripting.ScriptObjectMirror;
 import org.apache.commons.io.IOUtils;
-import org.junit.Before;
-import org.junit.Test;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
 
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
@@ -14,7 +14,7 @@ public class NashornDemoTest {
 
     private ScriptEngine nashorn;
 
-    @Before
+    @BeforeTest
     public void setup(){
         ScriptEngineManager manager = new ScriptEngineManager();
         nashorn = manager.getEngineByName("nashorn");

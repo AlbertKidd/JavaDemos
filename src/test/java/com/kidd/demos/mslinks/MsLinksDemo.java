@@ -1,7 +1,7 @@
 package com.kidd.demos.mslinks;
 
 import mslinks.ShellLink;
-import org.junit.Test;
+import org.testng.annotations.Test;
 
 /**
  * @author Kidd

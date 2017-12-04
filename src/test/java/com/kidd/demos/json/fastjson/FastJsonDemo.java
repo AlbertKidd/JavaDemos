@@ -1,7 +1,7 @@
 package com.kidd.demos.json.fastjson;
 
 import com.alibaba.fastjson.JSONObject;
-import org.junit.Test;
+import org.testng.annotations.Test;
 
 /**
  * @author Kidd

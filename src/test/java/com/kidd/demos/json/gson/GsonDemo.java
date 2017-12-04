@@ -1,7 +1,7 @@
 package com.kidd.demos.json.gson;
 
 import com.google.gson.JsonObject;
-import org.junit.Test;
+import org.testng.annotations.Test;
 
 /**
  * @author Kidd

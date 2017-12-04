@@ -3,7 +3,7 @@ package com.kidd.demos.xstream;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.DomDriver;
 import lombok.extern.log4j.Log4j2;
-import org.junit.Test;
+import org.testng.annotations.Test;
 
 /**
  * @author Kidd

@@ -2,7 +2,7 @@ package com.kidd.demos.log4j;
 
 import lombok.extern.log4j.Log4j2;
 import org.apache.logging.log4j.ThreadContext;
-import org.junit.Test;
+import org.testng.annotations.Test;
 
 @Log4j2
 public class Log4j2Demo {

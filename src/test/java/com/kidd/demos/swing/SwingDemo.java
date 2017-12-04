@@ -1,6 +1,6 @@
 package com.kidd.demos.swing;
 
-import org.junit.Test;
+import org.testng.annotations.Test;
 
 import javax.swing.*;
 import java.awt.*;

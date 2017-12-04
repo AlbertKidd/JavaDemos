@@ -1,8 +1,7 @@
 package com.kidd.demos.spring;
 
-
-import org.junit.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.testng.annotations.Test;
 
 public class MethodInterceptorTest {
 

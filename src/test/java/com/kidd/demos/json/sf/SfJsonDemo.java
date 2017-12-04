@@ -3,7 +3,7 @@ package com.kidd.demos.json.sf;
 import com.kidd.demos.beans.RegisterResult;
 import net.sf.json.JSONObject;
 import net.sf.json.util.JSONUtils;
-import org.junit.Test;
+import org.testng.annotations.Test;
 
 /**
  * @author Kidd
