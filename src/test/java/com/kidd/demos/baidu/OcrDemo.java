@@ -46,6 +46,9 @@ public class OcrDemo {
     private static final String IMG_1 = "src/test/resources/ocr/1.jpg";
     private static final String IMG_2 = "src/test/resources/ocr/2.jpg";
     private static final String IMG_3 = "src/test/resources/ocr/3.jpg";
+    private static final String IMG_a = "src/test/resources/ocr/a.jpg";
+    private static final String IMG_b = "src/test/resources/ocr/b.jpg";
+    private static final String IMG_c = "src/test/resources/ocr/c.jpg";
 
     private StopWatch stopWatch;
 
@@ -141,7 +144,7 @@ public class OcrDemo {
         //图像数据，base64编码后进行urlencode
         list.add(new BasicNameValuePair("image", imgBase64));
         //是否检测图像朝向，默认不检测
-        list.add(new BasicNameValuePair("detect_direction", "false"));
+        list.add(new BasicNameValuePair("detect_direction", "true"));
         //是否返回识别结果中每一行的置信度
         list.add(new BasicNameValuePair("probability", "false"));
 
@@ -180,7 +183,7 @@ public class OcrDemo {
 
     @Test
     public void testHighPrecision() throws Exception{
-        JsonArray wordsResult = getWordsResult(HIGH_PRECISION_LOCATION, IMG_1);
+        JsonArray wordsResult = getWordsResult(HIGH_PRECISION_LOCATION, IMG_c);
         for (int i = 0; i < wordsResult.size(); i++){
             JsonObject word = wordsResult.get(i).getAsJsonObject();
             String wordStr = word.get("words").getAsString();
