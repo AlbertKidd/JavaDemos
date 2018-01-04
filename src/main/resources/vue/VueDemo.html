@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+    <div id="first">
+        {{ msg }}
+    </div>
+
+    <div id="second">
+        <span v-bind:title="msg">
+            hold your mouse
+        </span>
+    </div>
+
+    <div id="third">
+        <p v-if="seen">
+           you can see the p
+        </p>
+    </div>
+
+    <div id="forth">
+        <ol>
+            <li v-for="item in list">
+                {{ item.text }}
+            </li>
+        </ol>
+    </div>
+
+    <div id="fifth">
+        <p>{{ msg }}</p>
+        <button v-on:click="reverse">reverse msg</button>
+    </div>
+
+    <div id="sixth">
+        <p>{{ msg }}</p>
+        <input v-model="msg">
+    </div>
+
+    <div id="seventh">
+        <ol>
+            <todo-item
+                v-for="item in list"
+                v-bind:todo="item"
+                v-bind:key="item.id">
+
+            </todo-item>
+        </ol>
+    </div>
+
+    <script type="text/javascript">
+        var app1 = new Vue({
+            el: '#first',
+            data: {
+                msg: 'Hello world !'
+            }
+        });
+        var app2 = new Vue({
+            el: '#second',
+            data: {
+                msg: 'Current time is : ' + new Date().toLocaleString()
+            }
+        });
+        var app3 = new Vue({
+            el: '#third',
+            data: {
+                seen: true
+            }
+        });
+        var app4 = new Vue({
+            el: '#forth',
+            data: {
+                list: [
+                    {text: 'first'},
+                    {text: 'second'},
+                    {text: 'third'}
+                ]
+            }
+        });
+        var app5 = new Vue({
+            el: '#fifth',
+            data: {
+                msg: 'origin msg'
+            },
+            methods: {
+                reverse: function () {
+                    this.msg = this.msg.split(' ').reverse().join(' ');
+                }
+            }
+        });
+        var app6 = new Vue({
+            el: '#sixth',
+            data: {
+                msg: 'input something'
+            }
+        });
+
+        Vue.component('todo-item', {
+            props: ['todo'],
+            template: '<li> {{ todo.text }} </li>'
+        });
+        var app7 = new Vue({
+            el: '#seventh',
+            data: {
+                list: [
+                    { id: 1, text: '奶酪' },
+                    { id: 0, text: '蔬菜' },
+                    { id: 2, text: '随便其它什么人吃的东西' }
+                ]
+            }
+        })
+    </script>
+
+</body>
+</html>
