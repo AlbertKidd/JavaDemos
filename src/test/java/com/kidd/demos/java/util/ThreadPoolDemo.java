@@ -38,7 +38,8 @@ public class ThreadPoolDemo {
         log.info("---- start ----");
         threadPool.schedule(task, 500, TimeUnit.MILLISECONDS);
         Thread.sleep(1000);
-        threadPool.scheduleAtFixedRate(task, 0, 500, TimeUnit.MILLISECONDS);
+        ScheduledFuture<?> schedule = threadPool.scheduleAtFixedRate(task, 0, 500, TimeUnit.MILLISECONDS);
+        schedule.cancel(false);
         Thread.sleep(10000);
     }
 
