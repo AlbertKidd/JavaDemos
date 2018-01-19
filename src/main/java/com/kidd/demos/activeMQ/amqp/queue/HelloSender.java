@@ -1,14 +1,8 @@
 package com.kidd.demos.activeMQ.amqp.queue;
 
-import javax.jms.Connection;
-import javax.jms.ConnectionFactory;
-import javax.jms.Destination;
-import javax.jms.JMSException;
-import javax.jms.Message;
-import javax.jms.MessageProducer;
-import javax.jms.Session;
-
 import org.apache.qpid.jms.JmsConnectionFactory;
+
+import javax.jms.*;
 
 public class HelloSender {  
   
