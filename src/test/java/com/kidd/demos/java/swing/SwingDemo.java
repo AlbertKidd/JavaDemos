@@ -1,4 +1,4 @@
-package com.kidd.demos.swing;
+package com.kidd.demos.java.swing;
 
 import org.testng.annotations.Test;
 

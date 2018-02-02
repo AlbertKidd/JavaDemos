@@ -1,4 +1,4 @@
-package com.kidd.demos.origin.classLoader;
+package com.kidd.demos.java.classLoader;
 
 import lombok.extern.log4j.Log4j2;
 import org.testng.annotations.Test;

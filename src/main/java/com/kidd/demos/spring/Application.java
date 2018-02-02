@@ -1,4 +1,4 @@
-package com.kidd.demos;
+package com.kidd.demos.spring;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

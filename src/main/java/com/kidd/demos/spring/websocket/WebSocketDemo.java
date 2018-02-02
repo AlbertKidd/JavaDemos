@@ -1,4 +1,4 @@
-package com.kidd.demos.websocket;
+package com.kidd.demos.spring.websocket;
 
 import javax.websocket.OnClose;
 import javax.websocket.OnMessage;

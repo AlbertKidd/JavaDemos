@@ -9,6 +9,7 @@ import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.Reader;
 
 public class NashornDemoTest {
 
@@ -29,10 +30,20 @@ public class NashornDemoTest {
 
     @Test
     public void test2() throws Exception{
-        String path = "/bundle/srv/combo/asyncErrorCallback.srv";
+        String path = "/nashorn/js1.js";
         InputStream inputStream = getClass().getResourceAsStream(path);
         String s = IOUtils.toString(inputStream, "utf-8");
         InputStream inputStream1 = IOUtils.toInputStream("//@ resourceURL=classpath:" + path + "\\r\\n" + s, "utf-8");
         Object eval = nashorn.eval(new InputStreamReader(inputStream1));
     }
+
+    @Test
+    public void test3() throws Exception{
+        InputStream inputStream = NashornDemo.class.getResourceAsStream("/js2.js");
+        Reader reader = new InputStreamReader(inputStream);
+        ScriptObjectMirror objectMirror = (ScriptObjectMirror) nashorn.eval(reader);
+        Object plus = objectMirror.call(null, "plus");
+    }
+
+
 }

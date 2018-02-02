@@ -1,4 +1,4 @@
-package com.kidd.demos.websocket;
+package com.kidd.demos.spring.websocket;
 
 import lombok.extern.log4j.Log4j2;
 import org.springframework.web.socket.TextMessage;
