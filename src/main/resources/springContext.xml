@@ -1,64 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:amq="http://activemq.apache.org/schema/core"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jms="http://www.springframework.org/schema/jms"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-       http://activemq.apache.org/schema/core http://activemq.apache.org/schema/core/activemq-core.xsd http://www.springframework.org/schema/jms http://www.springframework.org/schema/jms/spring-jms.xsd">
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <!--<amq:broker useJmx="false" persistent="true">-->
-        <!--<amq:transportConnectors>-->
-            <!--&lt;!&ndash; DOS protection, limit concurrent connections to 1000 and frame size to 100MB &ndash;&gt;-->
-            <!--<amq:transportConnector name="openwire" uri="tcp://0.0.0.0:61616?maximumConnections=1000&amp;wireFormat.maxFrameSize=104857600"/>-->
-            <!--<amq:transportConnector name="amqp" uri="amqp://0.0.0.0:5672?maximumConnections=1000&amp;wireFormat.maxFrameSize=104857600"/>-->
-            <!--<amq:transportConnector name="stomp" uri="stomp://0.0.0.0:61613?maximumConnections=1000&amp;wireFormat.maxFrameSize=104857600"/>-->
-            <!--<amq:transportConnector name="mqtt" uri="mqtt://0.0.0.0:1883?maximumConnections=1000&amp;wireFormat.maxFrameSize=104857600"/>-->
-            <!--<amq:transportConnector name="ws" uri="ws://0.0.0.0:61614?maximumConnections=1000&amp;wireFormat.maxFrameSize=104857600"/>-->
-        <!--</amq:transportConnectors>-->
-    <!--</amq:broker>-->
-    <amq:connectionFactory id="jmsFactory" brokerURL="vm://localhost/" userName="admin" password="password" prefetchPolicy="prefetchPolicy"/>
-
-
-    <bean id="broker" class="org.apache.activemq.xbean.BrokerFactoryBean">
-        <property name="config" value="conf/activemq.xml"/>
-        <property name="start" value="true"/>
-        <property name="systemExitOnShutdown" value="true"/>
-    </bean>
-    <!--<bean id="jmsFactory" class="org.apache.activemq.pool.PooledConnectionFactory">-->
-        <!--<property name="connectionFactory" ref="singleConnectionFactory"/>-->
-    <!--</bean>-->
-
-    <bean id="singleConnectionFactory" class="org.springframework.jms.connection.SingleConnectionFactory">
-        <property name="targetConnectionFactory" ref="jmsFactory"/>
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="location" value="classpath:/conf/jdbc.properties"/>
     </bean>
 
-    <!--<amq:connectionFactory id="connectionFactory" brokerURL="vm://localhost/" userName="admin" password="password"/>-->
+    <bean id="datasource" class="org.apache.commons.dbcp2.BasicDataSource"
+          p:driverClassName="${jdbc.driverClassName}"
+          p:url="${jdbc.url}"
+          p:username="${jdbc.username}"
+          p:password="${jdbc.password}"/>
 
-    <bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
-        <property name="connectionFactory" ref="singleConnectionFactory"/>
-    </bean>
-
-    <bean id="prefetchPolicy" class="org.apache.activemq.ActiveMQPrefetchPolicy">
-        <property name="topicPrefetch" value="1"/>
-    </bean>
-
-    <bean id="kiddTopic" class="org.apache.activemq.command.ActiveMQTopic">
-        <constructor-arg value="KiddTopic"/>
-    </bean>
-
-    <bean id="publisher" class="com.demo.kidd.amq.Publisher">
-        <property name="jmsTemplate" ref="jmsTemplate"/>
-        <property name="destinations">
-            <list>
-                <ref bean="kiddTopic"/>
-            </list>
-        </property>
-    </bean>
-
-    <bean id="listener" class="com.demo.kidd.amq.Listener"/>
-
-    <jms:listener-container connection-factory="singleConnectionFactory">
-        <jms:listener destination="KiddTopic" ref="listener" method="onMessage"/>
-    </jms:listener-container>
-
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate"
+        p:dataSource-ref="datasource"/>
 
 </beans>

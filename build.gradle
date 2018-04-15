@@ -22,13 +22,14 @@ repositories {
      }
      maven { url "https://repo.eclipse.org/content/repositories/paho-releases/" }
      maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
-     //maven { url "http://repo.maven.apache.org/maven2" }
+     maven { url "http://repo.maven.apache.org/maven2" }
 }
 
 dependencies {
     compile("org.springframework.boot:spring-boot-starter-web")
     compile("org.springframework.boot:spring-boot-starter-activemq")
     compile("org.springframework.boot:spring-boot-starter-websocket")
+    compile("org.springframework.boot:spring-boot-starter-jdbc")
     compile 'org.codehaus.groovy:groovy:2.4.9'
     compile group: 'org.apache.activemq', name: 'activemq-core', version:'5.7.0'
     compile group: 'org.projectlombok', name: 'lombok', version:'1.14.8'
