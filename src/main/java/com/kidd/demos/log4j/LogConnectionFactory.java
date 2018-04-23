@@ -45,7 +45,7 @@ public class LogConnectionFactory {
             return null;
         }
         DriverManagerConnectionFactory connectionFactory = new DriverManagerConnectionFactory(
-                "jdbc:mysql://127.0.0.1:3306/demos",
+                "jdbc:mysql://127.0.0.1:3306/demo1",
                 properties
         );
         PoolableConnectionFactory poolableConnectionFactory =

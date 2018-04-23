@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:amq="http://activemq.apache.org/schema/core"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jms="http://www.springframework.org/schema/jms"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://activemq.apache.org/schema/core http://activemq.apache.org/schema/core/activemq-core.xsd http://www.springframework.org/schema/jms http://www.springframework.org/schema/jms/spring-jms.xsd">
+
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="location" value="classpath:jdbc.properties"/>
+    </bean>
+
+    <bean id="parentDB" class="org.springframework.jdbc.datasource.DriverManagerDataSource" abstract="true">
+        <property name="driverClassName" value="${jdbc.driverClassName}"/>
+        <property name="username" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+    </bean>
+
+    <bean id="db1" parent="parentDB">
+        <property name="url" value="${jdbc.url-1}"/>
+    </bean>
+
+    <bean id="db2" parent="parentDB">
+        <property name="url" value="${jdbc.url-2}"/>
+    </bean>
+
+    <bean id="db3" parent="parentDB">
+        <property name="url" value="${jdbc.url-3}"/>
+    </bean>
+
+    <bean id="datasource" class="com.kidd.demos.spring.db.DynamicDataSource">
+        <property name="targetDataSources">
+            <map>
+                <entry key="db1" value-ref="db1"/>
+                <entry key="db2" value-ref="db2"/>
+                <entry key="db3" value-ref="db3"/>
+            </map>
+        </property>
+        <property name="defaultTargetDataSource" ref="db1"/>
+    </bean>
+
+    <bean id="simpleDao" class="com.kidd.demos.spring.db.SimpleDao">
+        <property name="dataSource" ref="datasource"/>
+    </bean>
+
+</beans>
