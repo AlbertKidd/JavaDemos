@@ -38,4 +38,10 @@ public class JdbcTemplateTest {
         jdbcTemplate.execute(MessageFormat.format(SQL_GRANT, "schema1", "niuwa"));
     }
 
+    @Test
+    public void testCount(){
+        String sql = "SELECT COUNT(account_code) FROM sys_account WHERE account_code = '1'";
+        jdbcTemplate.queryForObject(sql, Integer.class);
+    }
+
 }
