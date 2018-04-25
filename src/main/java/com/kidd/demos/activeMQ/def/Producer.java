@@ -1,5 +1,6 @@
 package com.kidd.demos.activeMQ.def;
 
+import lombok.extern.log4j.Log4j2;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.activemq.ActiveMQConnection;
 import org.apache.activemq.ActiveMQConnectionFactory;
@@ -9,7 +10,7 @@ import javax.jms.*;
 /**
  * Created by Kidd on 2017/7/13.
  */
-@Slf4j
+@Log4j2
 public class Producer {
 
     //默认连接用户名

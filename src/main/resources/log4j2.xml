@@ -8,14 +8,14 @@
             <!--${kidd:a}为自定义Lookup-->
             <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} ${kidd:a} - %msg%n"/>
         </Console>
-        <JDBC name="DatabaseAppender" tableName="log">
-            <ConnectionFactory class="com.kidd.demos.log4j.LogConnectionFactory"
-                               method="getDatabaseConnection"/>
-            <Column name="log_time" pattern="%d{HH:mm:ss}"/>
-            <Column name="log_msg" pattern="%msg"/>
-        </JDBC>
+        <!--<JDBC name="DatabaseAppender" tableName="log">-->
+        <!--<ConnectionFactory class="com.kidd.demos.log4j.LogConnectionFactory"-->
+        <!--method="getDatabaseConnection"/>-->
+        <!--<Column name="log_time" pattern="%d{HH:mm:ss}"/>-->
+        <!--<Column name="log_msg" pattern="%msg"/>-->
+        <!--</JDBC>-->
         <RollingRandomAccessFile name="simpleLogFile" fileName="${LOG_HOME}/simple.log"
-            filePattern="${LOG_HOME}/simple-%d{yyyy.MM.dd HH-mm-ss}-%i.log">
+                                 filePattern="${LOG_HOME}/simple-%d{yyyy.MM.dd HH-mm-ss}-%i.log">
             <PatternLayout pattern="%d{HH:mm:ss} [%t] %-5level %logger{36} - %msg%n"/>
             <Policies>
                 <TimeBasedTriggeringPolicy interval="1"/>
@@ -28,15 +28,32 @@
                 </Delete>
             </DefaultRolloverStrategy>
         </RollingRandomAccessFile>
+
+        <Routing name="Routing">
+            <Routes pattern="$${kidd:random}">
+                <Route>
+                    <File name="logFile-${kidd:random}"
+                          fileName="${LOG_HOME}/concurrent-${kidd:random}.log">
+                        <PatternLayout pattern="%d %-5p [%t] %C{2} ${kidd:random} - %m%n "/>
+                    </File>
+                </Route>
+            </Routes>
+        </Routing>
+        <Async name="async" bufferSize="1000" includeLocation="true">
+            <AppenderRef ref="Routing"/>
+        </Async>
     </Appenders>
     <Loggers>
         <Root level="debug">
             <AppenderRef ref="Console"/>
         </Root>
-        <Logger name="com.demo.kidd.log4j2.Log4j2Demo" level="trace" additivity="false">
+        <Logger name="com.kidd.demos" level="trace" additivity="false">
             <AppenderRef ref="Console"/>
             <AppenderRef ref="DatabaseAppender"/>
             <AppenderRef ref="simpleLogFile"/>
+        </Logger>
+        <Logger name="routingLogger" level="debug" additivity="true">
+            <AppenderRef ref="Routing"/>
         </Logger>
     </Loggers>
 </Configuration>

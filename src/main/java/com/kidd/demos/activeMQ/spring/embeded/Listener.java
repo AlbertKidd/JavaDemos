@@ -6,10 +6,12 @@ import javax.jms.MessageListener;
 import javax.jms.TextMessage;
 
 /**
- * Created by Kidd on 2017/7/28.
+ *
+ * @author Kidd
  */
 public class Listener implements MessageListener{
 
+    @Override
     public void onMessage(Message message) {
         try{
             if (message instanceof TextMessage){

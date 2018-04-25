@@ -1,6 +1,6 @@
 package com.kidd.demos.paho;
 
-import lombok.extern.log4j.Log4j;
+import lombok.extern.log4j.Log4j2;
 import org.eclipse.paho.client.mqttv3.MqttClient;
 import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
 import org.eclipse.paho.client.mqttv3.MqttException;
@@ -10,7 +10,7 @@ import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
 /**
  * Created by Kidd on 2017/7/14.
  */
-@Log4j
+@Log4j2
 public class PahoProducer {
 
     public static void main(String[] args) {

@@ -21,6 +21,7 @@ public class Publisher {
     public void sendTextMessage(final String text){
         for (Destination destination : destinations){
             jmsTemplate.send(destination, new MessageCreator() {
+                @Override
                 public Message createMessage(Session session) throws JMSException {
                     return session.createTextMessage(text);
                 }
@@ -31,6 +32,7 @@ public class Publisher {
     public void sendMapMessage(final Map<String, Object> map){
         for (Destination destination : destinations){
             jmsTemplate.send(destination, new MessageCreator() {
+                @Override
                 public Message createMessage(Session session) throws JMSException {
                     MapMessage message = session.createMapMessage();
                     for (Map.Entry entry : map.entrySet()){

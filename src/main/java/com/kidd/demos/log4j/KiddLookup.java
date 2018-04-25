@@ -4,17 +4,17 @@ import org.apache.logging.log4j.core.LogEvent;
 import org.apache.logging.log4j.core.config.plugins.Plugin;
 import org.apache.logging.log4j.core.lookup.StrLookup;
 
-@Plugin(name = "kidd", category = "Lookup")
+@Plugin(name = "kidd", category = StrLookup.CATEGORY)
 public class KiddLookup implements StrLookup {
+
     @Override
     public String lookup(String key) {
-        if (key.equals("a")) {
-            return "aa";
+        switch (key) {
+            case "random":
+                return LogContext.get();
+            default:
+                return key;
         }
-        if (key.equals("b")) {
-            return "bb";
-        }
-        return null;
     }
 
     @Override
