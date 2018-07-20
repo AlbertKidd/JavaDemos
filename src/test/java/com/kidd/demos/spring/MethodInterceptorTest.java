@@ -7,7 +7,7 @@ public class MethodInterceptorTest {
 
     @Test
     public void test(){
-        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("MethodInterceptorContext.xml");
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("common/MethodInterceptorContext.xml");
         InitBean initBean = (InitBean)context.getBean("initBean");
         initBean.show("show something...");
     }

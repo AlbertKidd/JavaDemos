@@ -19,7 +19,7 @@ public class JdbcTemplateTest {
 
     @BeforeTest
     public void init(){
-        context = new ClassPathXmlApplicationContext("/springContext.xml");
+        context = new ClassPathXmlApplicationContext("/common/springContext.xml");
         jdbcTemplate = (JdbcTemplate) context.getBean("jdbcTemplate");
     }
 

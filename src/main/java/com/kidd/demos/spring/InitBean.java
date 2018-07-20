@@ -11,12 +11,13 @@ public class InitBean implements InitializingBean {
         log.info(s);
     }
 
+    @Override
     public void afterPropertiesSet() throws Exception {
         log.info("this is a initializing bean");
     }
 
     public static void main(String[] args) {
-        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("MethodInterceptorContext.xml");
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("common/springContext.xml");
         InitBean initBean = (InitBean)context.getBean("initBean");
         initBean.show("show something...");
     }
