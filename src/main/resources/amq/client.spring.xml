@@ -34,6 +34,9 @@
         <property name="subscriptionDurable" value="true"/>
         <property name="clientId" value="kidd"/>
         <property name="destination" ref="kiddTopic"/>
+        <!--destination与destinationName只配置一个，destinationName为动态destination-->
+        <property name="destinationName" value="kiddDestination"/>
+        <!--配置destinationName时使用，true则将destination作为topic处理，否则为queue-->
         <property name="pubSubDomain" value="true"/>
         <property name="messageListener" ref="listener"/>
     </bean>
