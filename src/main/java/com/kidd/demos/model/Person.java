@@ -1,19 +1,30 @@
 package com.kidd.demos.model;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
+import org.springframework.data.annotation.Id;
 
 import java.io.Serializable;
 
 /**
  * @author Kidd
  */
-@Getter @Setter
+@Data
 public class Person implements Serializable {
+
+    @Id
+    private String id;
 
     private int age;
 
     private String name;
 
     private String address;
+
+    public Person(){}
+
+    public Person(String name, int age, String address){
+        this.name = name;
+        this.age = age;
+        this.address = address;
+    }
 }

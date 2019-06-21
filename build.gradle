@@ -23,6 +23,7 @@ dependencies {
 //    compile("org.springframework.boot:spring-boot-starter-activemq")
     compile("org.springframework.boot:spring-boot-starter-websocket")
     compile("org.springframework.boot:spring-boot-starter-jdbc")
+    compile("org.springframework.boot:spring-boot-starter-data-mongodb")
     compile 'org.codehaus.groovy:groovy:2.4.9'
 
     //lombok
