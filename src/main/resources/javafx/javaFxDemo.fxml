@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.kidd.demos.javafx.JavaFxController">
+    <children>
+        <ButtonBar layoutX="37.0" layoutY="312.0" prefHeight="40.0" prefWidth="540.0">
+            <buttons>
+                <Button fx:id="btn1" defaultButton="true" mnemonicParsing="false" text="Button1"/>
+                <Button fx:id="btn2" cancelButton="true" mnemonicParsing="false" text="Button2"/>
+                <Button fx:id="btn3" mnemonicParsing="false" text="Button3"/>
+            </buttons>
+        </ButtonBar>
+    </children>
+</AnchorPane>
