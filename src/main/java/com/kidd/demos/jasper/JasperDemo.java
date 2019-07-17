@@ -1,5 +1,7 @@
 package com.kidd.demos.jasper;
 
+import net.sf.jasperreports.engine.DefaultJasperReportsContext;
+import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
@@ -22,17 +24,28 @@ import java.util.Map;
 public class JasperDemo {
 
     public static void main(String[] args) throws Exception{
+        testPrint("Microsoft Print to PDF");
+    }
+
+    private static JasperPrint getJasperPrint() throws JRException {
         String filePath = JasperDemo.class.getResource("/jasper/report.jrxml").getPath();
         JasperReport jasperReport = JasperCompileManager.compileReport(filePath);
         Map<String, Object> map = new HashMap<>();
         map.put("{PAGE_NUMBER}", 1);
         map.put("{PAGE_COUNT}", 1);
-        JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, map);
+        return JasperFillManager.fillReport(jasperReport, map);
+    }
+
+
+    private static void testPrint(String printerName) throws JRException{
+        JasperPrint jasperPrint = getJasperPrint();
+        CustomJRPrinterAWT printerAWT = new CustomJRPrinterAWT(DefaultJasperReportsContext.getInstance(), jasperPrint, printerName);
+        printerAWT.printPages(0, jasperPrint.getPages().size() - 1, false);
+    }
+
+    private static void testPreview() throws JRException{
+        JasperPrint jasperPrint = getJasperPrint();
         JasperViewer jasperViewer = new CustomJasperViewer(jasperPrint, false);
         jasperViewer.setVisible(true);
-        for (;;){
-            System.out.println("I'm running");
-            Thread.sleep(2 * 1000);
-        }
     }
 }
