@@ -4,8 +4,12 @@ import org.apache.logging.log4j.core.LogEvent;
 import org.apache.logging.log4j.core.config.plugins.Plugin;
 import org.apache.logging.log4j.core.lookup.StrLookup;
 
+/**
+ * 自定义StrLookup
+ * @author Kidd
+ */
 @Plugin(name = "kidd", category = StrLookup.CATEGORY)
-public class KiddLookup implements StrLookup {
+public class LookupDemo implements StrLookup {
 
     @Override
     public String lookup(String key) {

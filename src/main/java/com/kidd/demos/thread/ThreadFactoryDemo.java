@@ -29,17 +29,7 @@ public class ThreadFactoryDemo {
             @Override
             public void run() {
                 log.info("hello");
-//                try {
-//                    Thread.sleep(5000);
-//                } catch (InterruptedException e) {
-//                    log.error(e);
-//                }
             }
         });
-//        log.info("start: " + System.nanoTime());
-//        while (!hello.isDone()){
-//            Thread.sleep(100);
-//        }
-//        log.info("end: " + System.nanoTime());
     }
 }

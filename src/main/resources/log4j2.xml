@@ -8,12 +8,6 @@
             <!--${kidd:a}为自定义Lookup-->
             <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} ${kidd:a} - %msg%n"/>
         </Console>
-        <!--<JDBC name="DatabaseAppender" tableName="log">-->
-        <!--<ConnectionFactory class="com.kidd.demos.log4j.LogConnectionFactory"-->
-        <!--method="getDatabaseConnection"/>-->
-        <!--<Column name="log_time" pattern="%d{HH:mm:ss}"/>-->
-        <!--<Column name="log_msg" pattern="%msg"/>-->
-        <!--</JDBC>-->
         <RollingRandomAccessFile name="simpleLogFile" fileName="${LOG_HOME}/simple.log"
                                  filePattern="${LOG_HOME}/simple-%d{yyyy.MM.dd HH-mm-ss}-%i.log">
             <PatternLayout pattern="%d{HH:mm:ss} [%t] %-5level %logger{36} - %msg%n"/>
