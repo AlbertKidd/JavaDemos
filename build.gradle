@@ -77,6 +77,7 @@ dependencies {
     compile group: 'com.vladsch.flexmark', name: 'flexmark', version: '0.28.34'
     compile group: 'org.apache.pdfbox', name: 'pdfbox', version: '2.0.16'
     compile group: 'net.sf.jasperreports', name: 'jasperreports', version: '6.9.0'
+    compile 'com.drewnoakes:metadata-extractor:2.12.0'
 
     testCompile group: 'org.testng', name: 'testng', version: '6.13.1'
 }
