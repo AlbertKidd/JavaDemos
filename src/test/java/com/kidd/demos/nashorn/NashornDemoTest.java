@@ -2,6 +2,7 @@ package com.kidd.demos.nashorn;
 
 import jdk.nashorn.api.scripting.ScriptObjectMirror;
 import org.apache.commons.io.IOUtils;
+import org.springframework.web.util.JavaScriptUtils;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
@@ -43,6 +44,19 @@ public class NashornDemoTest {
         Reader reader = new InputStreamReader(inputStream);
         ScriptObjectMirror objectMirror = (ScriptObjectMirror) nashorn.eval(reader);
         Object plus = objectMirror.call(null, "plus");
+    }
+
+    @Test
+    public void test4() throws Exception {
+        String script1 = "(function(){return JSON.parse('{\"a\": null}')})()";
+        Object result1 = nashorn.eval(script1);
+
+        String json = "{\"extraChanges\":{\"qixieziliao\":[{\"value\":null,\"id\":\"3fa70e3f-21cb-481b-a778-db7fa8c583c7\",\"name\":\"attr2\",\"tableName\":\"yfzx_specialty\",\"tableKey\":1,\"title\":\"长相\",\"editor\":\"{\\\"xtype\\\":\\\"optionlist\\\",\\\"name\\\":\\\"attr2\\\",\\\"fieldLabel\\\":\\\"长相\\\",\\\"servicePath\\\":\\\"/democore/func/combobox/basicOptionList/accountCombo.option\\\",\\\"queryKey\\\":\\\"_default\\\",\\\"valueField\\\":\\\"id\\\",\\\"displayField\\\":\\\"text\\\"}\"}]},\"dataSetChange\":{\"flag\":\"Modified\",\"id\":1},\"mode\":\"single\"}";
+        String script2 = String.format("(function(){return JSON.parse('%s');})()", JavaScriptUtils.javaScriptEscape(json));
+        Object result2 = nashorn.eval(script2);
+
+
+        System.out.println(result2);
     }
 
 

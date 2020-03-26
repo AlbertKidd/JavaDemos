@@ -7,6 +7,7 @@ import org.testng.annotations.Test;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -35,6 +36,15 @@ public class ScheduledExecutorTest {
     @Test
     public void testScheduleAtFixDelay() throws Exception {
         scheduledExecutorService.scheduleWithFixedDelay(getTask(), getCeilingMinuteTime(), 500, TimeUnit.MILLISECONDS);
+        Thread.sleep(5000);
+    }
+
+    @Test
+    public void testShutdown() throws Exception{
+        scheduledExecutorService.scheduleWithFixedDelay(getTask(), getCeilingMinuteTime(), 1000, TimeUnit.MILLISECONDS);
+        Thread.sleep(1000);
+        scheduledExecutorService.scheduleWithFixedDelay(getTask(), 1000, 1000, TimeUnit.MILLISECONDS);
+        List<Runnable> runnables = scheduledExecutorService.shutdownNow();
         Thread.sleep(5000);
     }
 

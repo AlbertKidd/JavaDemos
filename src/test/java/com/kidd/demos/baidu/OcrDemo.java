@@ -152,9 +152,12 @@ public class OcrDemo {
         httpPost.setEntity(urlEncodedFormEntity);
 
         CloseableHttpClient aDefault = HttpClients.createDefault();
+        long start = System.currentTimeMillis();
         CloseableHttpResponse response = aDefault.execute(httpPost);
         HttpEntity entity = response.getEntity();
         String s = EntityUtils.toString(entity);
+        long end = System.currentTimeMillis();
+        System.out.println("请求耗时：" + (end - start)/1000.0);
         JsonObject jsonObject = new JsonParser().parse(s).getAsJsonObject();
         String logId = jsonObject.get("log_id").getAsString();
         System.out.println("log_id: " + logId);
