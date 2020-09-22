@@ -18,6 +18,8 @@ Demos是用于练手Java各种库的项目，使用Gradle构建，目前包含
 * Spring 
 * vfs：apache文件系统
 * xstream
+* easyExcel 阿里出品的excel读写库
+* pdfbox apache出品的pdf读写库
 
 TODO:
 
