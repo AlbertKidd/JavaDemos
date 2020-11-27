@@ -24,5 +24,6 @@ public class TopologicalSortTest {
         dag.addEdge(b, c);
         dag.addEdge(b, d);
         List<String> sort = TopologicalSorter.sort(dag);
+        System.out.println(sort);
     }
 }

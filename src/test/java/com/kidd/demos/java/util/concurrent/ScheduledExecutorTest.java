@@ -1,4 +1,4 @@
-package com.kidd.demos.java.util.cocurrent;
+package com.kidd.demos.java.util.concurrent;
 
 import lombok.extern.log4j.Log4j2;
 import org.apache.commons.lang3.time.DateUtils;

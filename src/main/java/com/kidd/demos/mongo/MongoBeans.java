@@ -1,9 +1,8 @@
 package com.kidd.demos.mongo;
 
-import com.mongodb.Mongo;
 import com.mongodb.MongoCredential;
+import com.mongodb.client.MongoClient;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.mongodb.core.MongoClientFactoryBean;
 import org.springframework.data.mongodb.core.MongoTemplate;
@@ -22,12 +21,12 @@ public class MongoBeans {
         factoryBean.setHost("localhost");
         factoryBean.setPort(27017);
         MongoCredential credential = MongoCredential.createCredential("root", "admin", "admin".toCharArray());
-        factoryBean.setCredentials(new MongoCredential[]{credential});
+        factoryBean.setCredential(new MongoCredential[]{credential});
         return factoryBean;
     }
 
     @Bean
-    public MongoTemplate mongoTemplate(Mongo mongo){
+    public MongoTemplate mongoTemplate(MongoClient mongo){
         return new MongoTemplate(mongo, "ebeit");
     }
 

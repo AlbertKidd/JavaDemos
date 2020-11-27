@@ -1,15 +1,8 @@
 package com.kidd.demos.webservice.springws;
 
-import org.springframework.ws.WebServiceMessage;
-import org.springframework.ws.client.core.SourceExtractor;
-import org.springframework.ws.client.core.WebServiceMessageCallback;
 import org.springframework.ws.client.core.WebServiceTemplate;
 import org.springframework.xml.transform.StringResult;
 import org.springframework.xml.transform.StringSource;
-
-import javax.xml.transform.Source;
-import javax.xml.transform.TransformerException;
-import java.io.IOException;
 
 /**
  * @author Kidd
@@ -17,8 +10,6 @@ import java.io.IOException;
 public class SpringWsClient {
 
     private static final String WSDL_URL = "http://58.60.229.60:8002/SPD_DDI/DDIService.asmx?wsdl";
-
-//    private WebServiceTemplate webServiceTemplate;
 
     public static void main(String[] args){
         WebServiceTemplate webServiceTemplate = new WebServiceTemplate();

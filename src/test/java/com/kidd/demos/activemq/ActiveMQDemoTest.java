@@ -1,13 +1,18 @@
 package com.kidd.demos.activemq;
 
 import com.kidd.demos.amq.ActiveMQDemo;
-import com.kidd.demos.amq.spring.embedded.Broker;
-import org.apache.activemq.broker.BrokerService;
+import org.apache.activemq.advisory.AdvisorySupport;
+import org.apache.activemq.command.ActiveMQTopic;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.jms.core.JmsTemplate;
 import org.testng.annotations.Test;
 
+import javax.jms.Connection;
+import javax.jms.ConnectionFactory;
 import javax.jms.Message;
+import javax.jms.MessageConsumer;
+import javax.jms.MessageListener;
+import javax.jms.Session;
 import javax.jms.TextMessage;
 import javax.jms.Topic;
 
@@ -64,6 +69,30 @@ public class ActiveMQDemoTest {
             System.out.println("收到——————————————" + textMessage.getText());
             Thread.sleep(3000);
         }
+    }
+
+    @Test
+    public void testAdvisory() throws Exception{
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("amq/client.spring.xml");
+        Topic kiddTopic = (Topic) context.getBean("kiddTopic");
+        ActiveMQTopic consumerAdvisoryTopic = AdvisorySupport.getConsumerAdvisoryTopic(kiddTopic);
+
+        ConnectionFactory connectionFactory = context.getBean(ConnectionFactory.class);
+        Connection connection = connectionFactory.createConnection();
+        connection.start();
+        Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
+        MessageConsumer consumer = session.createConsumer(consumerAdvisoryTopic);
+        consumer.setMessageListener(new MessageListener() {
+            @Override
+            public void onMessage(Message message) {
+                System.out.println(message);
+            }
+        });
+        Thread.sleep(100000000000L);
+    }
+
+    public void testSendAndReceive(){
+
     }
 
 }

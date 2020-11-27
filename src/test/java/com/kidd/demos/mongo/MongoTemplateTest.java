@@ -3,10 +3,10 @@ package com.kidd.demos.mongo;
 import com.google.gson.Gson;
 import com.kidd.demos.model.Person;
 import com.kidd.demos.model.PersonCopy;
-import com.mongodb.WriteResult;
+import com.mongodb.client.result.DeleteResult;
+import com.mongodb.client.result.UpdateResult;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.data.mongodb.core.CollectionOptions;
 import org.springframework.data.mongodb.core.FindAndModifyOptions;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
@@ -106,31 +106,31 @@ public class MongoTemplateTest {
         mongoTemplate.insert(newPersonList(), COLLECTION_PERSON);
 
         // 更新查询到的第一条数据
-        WriteResult writeResult1 = mongoTemplate.updateFirst(ageQuery, ageUpdate, Person.class);
+        UpdateResult UpdateResult1 = mongoTemplate.updateFirst(ageQuery, ageUpdate, Person.class);
 
         // 更新查询到的第一条数据
-        WriteResult writeResult2 = mongoTemplate.updateFirst(ageQuery, ageUpdate, COLLECTION_PERSON);
+        UpdateResult UpdateResult2 = mongoTemplate.updateFirst(ageQuery, ageUpdate, COLLECTION_PERSON);
 
         // 更新查询到的第一条数据
-        WriteResult writeResult3 = mongoTemplate.updateFirst(ageQuery, ageUpdate, Person.class, COLLECTION_PERSON);
+        UpdateResult UpdateResult3 = mongoTemplate.updateFirst(ageQuery, ageUpdate, Person.class, COLLECTION_PERSON);
 
         // 更新查询到的所有数据
-        WriteResult writeResult4 = mongoTemplate.updateMulti(ageQuery, ageUpdate, Person.class);
+        UpdateResult UpdateResult4 = mongoTemplate.updateMulti(ageQuery, ageUpdate, Person.class);
 
         // 更新查询到的所有数据
-        WriteResult writeResult5 = mongoTemplate.updateMulti(ageQuery, ageUpdate, COLLECTION_PERSON);
+        UpdateResult UpdateResult5 = mongoTemplate.updateMulti(ageQuery, ageUpdate, COLLECTION_PERSON);
 
         // 更新查询到的所有数据
-        WriteResult writeResult6 = mongoTemplate.updateMulti(ageQuery, ageUpdate, PersonCopy.class, COLLECTION_PERSON);
+        UpdateResult UpdateResult6 = mongoTemplate.updateMulti(ageQuery, ageUpdate, PersonCopy.class, COLLECTION_PERSON);
 
         // 更新根据查询条件查出的第一条记录，不存在则按照查询条件与更新函数插入一条数据
-        WriteResult writeResult7 = mongoTemplate.upsert(ageQuery, ageUpdate, COLLECTION_PERSON);
+        UpdateResult UpdateResult7 = mongoTemplate.upsert(ageQuery, ageUpdate, COLLECTION_PERSON);
 
         // 更新根据查询条件查出的第一条记录，不存在则按照查询条件与更新函数插入一条数据
-        WriteResult writeResult8 = mongoTemplate.upsert(ageQuery, ageUpdate, Person.class);
+        UpdateResult UpdateResult8 = mongoTemplate.upsert(ageQuery, ageUpdate, Person.class);
 
         // 更新根据查询条件查出的第一条记录，不存在则按照查询条件与更新函数插入一条数据
-        WriteResult writeResult9 = mongoTemplate.upsert(ageQuery, ageUpdate, PersonCopy.class, COLLECTION_PERSON);
+        UpdateResult UpdateResult9 = mongoTemplate.upsert(ageQuery, ageUpdate, PersonCopy.class, COLLECTION_PERSON);
 
         // 根据查询条件找到并修改查到的第一条记录，返回查出的记录（修改前）
         Person modifyPerson1 = mongoTemplate.findAndModify(ageQuery, ageUpdate, Person.class);
@@ -157,23 +157,23 @@ public class MongoTemplateTest {
 
         // 根据条件删除数据
         mongoTemplate.insert(person, COLLECTION_PERSON);
-        WriteResult remove1 = mongoTemplate.remove(ageQuery, COLLECTION_PERSON);
+        DeleteResult remove1 = mongoTemplate.remove(ageQuery, COLLECTION_PERSON);
 
         // 根据条件删除数据
         mongoTemplate.insert(person, COLLECTION_PERSON);
-        WriteResult remove2 = mongoTemplate.remove(ageQuery, Person.class);
+        DeleteResult remove2 = mongoTemplate.remove(ageQuery, Person.class);
 
         // 根据条件删除数据
         mongoTemplate.insert(person, COLLECTION_PERSON);
-        WriteResult remove3 = mongoTemplate.remove(ageQuery, PersonCopy.class, COLLECTION_PERSON);
+        DeleteResult remove3 = mongoTemplate.remove(ageQuery, PersonCopy.class, COLLECTION_PERSON);
 
         // 删除指定数据
         mongoTemplate.insert(person, COLLECTION_PERSON);
-        WriteResult remove4 = mongoTemplate.remove(person);
+        DeleteResult remove4 = mongoTemplate.remove(person);
 
         // 删除指定数据
         mongoTemplate.insert(person, COLLECTION_PERSON);
-        WriteResult remove5 = mongoTemplate.remove(person, COLLECTION_PERSON);
+        DeleteResult remove5 = mongoTemplate.remove(person, COLLECTION_PERSON);
 
         // 根据条件找到并删除一条数据，返回找到的对象
         mongoTemplate.insert(person, COLLECTION_PERSON);

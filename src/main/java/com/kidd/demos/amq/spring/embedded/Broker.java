@@ -4,9 +4,7 @@ import org.apache.activemq.broker.BrokerPlugin;
 import org.apache.activemq.broker.BrokerService;
 import org.apache.activemq.security.AuthenticationUser;
 import org.apache.activemq.security.SimpleAuthenticationPlugin;
-import org.apache.activemq.store.kahadb.KahaDBPersistenceAdapter;
 
-import java.io.File;
 import java.util.Collections;
 
 /**
@@ -35,10 +33,7 @@ public class Broker {
         authenticationPlugin.setUsers(Collections.singletonList(user));
         brokerService.setPlugins(new BrokerPlugin[]{authenticationPlugin});
 
-        // message store
-        KahaDBPersistenceAdapter persistenceAdapter = new KahaDBPersistenceAdapter();
-        persistenceAdapter.setDirectory(new File(KAHADB_DATA_PATH));
-        brokerService.setPersistenceAdapter(persistenceAdapter);
+        // todo setPersistenceAdapter
 
         // todo system usage
 

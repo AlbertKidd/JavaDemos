@@ -1,17 +1,27 @@
 
 package com.kidd.demos.amq;
 
-import lombok.extern.log4j.Log4j2;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.activemq.ActiveMQConnectionFactory;
 import org.apache.activemq.command.ActiveMQQueue;
 import org.apache.activemq.command.ActiveMQTopic;
 
-import javax.jms.*;
+import javax.jms.Connection;
+import javax.jms.DeliveryMode;
+import javax.jms.Destination;
+import javax.jms.JMSException;
+import javax.jms.Message;
+import javax.jms.MessageConsumer;
+import javax.jms.MessageListener;
+import javax.jms.MessageProducer;
+import javax.jms.Session;
+import javax.jms.TextMessage;
+import javax.jms.Topic;
 
 /**
  * @author Kidd
  */
-@Log4j2
+@Slf4j
 public class ActiveMQDemo {
 
     public enum DestType{
@@ -99,7 +109,7 @@ public class ActiveMQDemo {
                     String msg = ((TextMessage)message).getText();
                     log.info(msg);
                 } catch (JMSException e) {
-                    log.error(e);
+                    log.error(e.getMessage(), e);
                 }
             }
         });
