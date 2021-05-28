@@ -1,7 +1,7 @@
 package com.kidd.demos.webservice;
 
 import com.kidd.demos.model.Person;
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.log4j.Log4j2;
 import org.apache.cxf.endpoint.Client;
 import org.apache.cxf.jaxws.endpoint.dynamic.JaxWsDynamicClientFactory;
 import org.testng.annotations.BeforeTest;
@@ -9,12 +9,11 @@ import org.testng.annotations.Test;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 /**
  * @author Kidd
  */
-@Slf4j
+@Log4j2
 public class CxfClientTest {
 
     private Client client;

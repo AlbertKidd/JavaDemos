@@ -1,7 +1,7 @@
 
 package com.kidd.demos.amq;
 
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.log4j.Log4j2;
 import org.apache.activemq.ActiveMQConnectionFactory;
 import org.apache.activemq.command.ActiveMQQueue;
 import org.apache.activemq.command.ActiveMQTopic;
@@ -21,7 +21,7 @@ import javax.jms.Topic;
 /**
  * @author Kidd
  */
-@Slf4j
+@Log4j2
 public class ActiveMQDemo {
 
     public enum DestType{

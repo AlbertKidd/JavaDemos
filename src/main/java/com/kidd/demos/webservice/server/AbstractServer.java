@@ -1,7 +1,7 @@
 package com.kidd.demos.webservice.server;
 
 import com.kidd.demos.model.Person;
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.log4j.Log4j2;
 
 import javax.jws.WebService;
 import java.util.List;
@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * @author Kidd
  */
-@Slf4j
+@Log4j2
 @WebService
 public abstract class AbstractServer implements IWebServiceServer {
 

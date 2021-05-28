@@ -2,7 +2,7 @@ package com.kidd.demos.webservice;
 
 import com.kidd.demos.model.Person;
 import com.kidd.demos.webservice.server.IWebServiceServer;
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.log4j.Log4j2;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
@@ -15,7 +15,7 @@ import java.util.List;
 /**
  * @author Kidd
  */
-@Slf4j
+@Log4j2
 public class WebServiceClientTest {
 
     IWebServiceServer servicePort;

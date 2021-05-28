@@ -38,15 +38,14 @@
         </Async>
     </Appenders>
     <Loggers>
-        <Root level="debug">
+        <Root level="info">
             <AppenderRef ref="Console"/>
         </Root>
-        <Logger name="com.kidd.demos" level="trace" additivity="false">
+        <Logger name="com.kidd.demos" level="info" additivity="false">
             <AppenderRef ref="Console"/>
-            <!--<AppenderRef ref="DatabaseAppender"/>-->
             <AppenderRef ref="simpleLogFile"/>
         </Logger>
-        <Logger name="routingLogger" level="debug" additivity="true">
+        <Logger name="routingLogger" level="warn" additivity="true">
             <AppenderRef ref="Routing"/>
         </Logger>
     </Loggers>

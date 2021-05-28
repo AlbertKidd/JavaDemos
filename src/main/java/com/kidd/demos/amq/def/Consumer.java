@@ -1,15 +1,22 @@
 package com.kidd.demos.amq.def;
 
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.log4j.Log4j2;
 import org.apache.activemq.ActiveMQConnection;
 import org.apache.activemq.ActiveMQConnectionFactory;
 
-import javax.jms.*;
+import javax.jms.Connection;
+import javax.jms.ConnectionFactory;
+import javax.jms.Destination;
+import javax.jms.MessageConsumer;
+import javax.jms.Session;
+import javax.jms.TextMessage;
+import javax.jms.Topic;
+import javax.jms.TopicSubscriber;
 
 /**
  * Created by Kidd on 2017/7/13.
  */
-@Slf4j
+@Log4j2
 public class Consumer {
 
     private static final String USERNAME = ActiveMQConnection.DEFAULT_USER;

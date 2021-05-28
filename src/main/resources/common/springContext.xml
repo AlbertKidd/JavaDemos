@@ -2,8 +2,18 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:p="http://www.springframework.org/schema/p" xmlns:util="http://www.springframework.org/schema/util"
-       xmlns:jaxws="http://cxf.apache.org/jaxws"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd">
+       xmlns:jaxws="http://cxf.apache.org/jaxws" xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd http://www.springframework.org/schema/tx https://www.springframework.org/schema/tx/spring-tx.xsd">
+
+    <!-- 使用annotation定义事务 -->
+    <tx:annotation-driven transaction-manager="transactionManager"
+                          proxy-target-class="true" />
+
+    <bean id="transactionManager"
+          class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource" />
+        <property name="nestedTransactionAllowed" value="true" />
+    </bean>
 
     <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
         <property name="locations">
@@ -13,15 +23,13 @@
         </property>
     </bean>
 
-<!--    <bean id="datasource" class="org.apache.commons.dbcp2.BasicDataSource"-->
-<!--          p:driverClassName="${jdbc.driverClassName}"-->
-<!--          p:url="${jdbc.url}"-->
-<!--          p:username="${jdbc.username}"-->
-<!--          p:password="${jdbc.password}"/>-->
+    <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource"
+          p:driverClassName="${jdbc.driverClassName}"
+          p:url="${jdbc.url}"
+          p:username="${jdbc.username}"
+          p:password="${jdbc.password}"/>
 
-<!--    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate"-->
-<!--        p:dataSource-ref="datasource"/>-->
-
-    <bean class="com.kidd.demos.thread.TestBean" id="testBean"/>
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate"
+        p:dataSource-ref="dataSource"/>
 
 </beans>

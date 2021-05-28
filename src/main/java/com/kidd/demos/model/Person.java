@@ -4,6 +4,7 @@ import lombok.Data;
 import org.springframework.data.annotation.Id;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * @author Kidd
@@ -19,6 +20,8 @@ public class Person implements Serializable {
     private String name;
 
     private String address;
+
+    private Date birthday;
 
     public Person(){}
 

@@ -1,6 +1,6 @@
 package com.kidd.demos.webservice.server;
 
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.log4j.Log4j2;
 
 import javax.jws.WebService;
 import javax.xml.ws.Endpoint;
@@ -8,7 +8,7 @@ import javax.xml.ws.Endpoint;
 /**
  * @author Kidd
  */
-@Slf4j
+@Log4j2
 @WebService
 public class ServerImpl extends AbstractServer{
 
