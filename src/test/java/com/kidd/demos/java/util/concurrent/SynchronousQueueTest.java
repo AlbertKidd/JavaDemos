@@ -2,7 +2,6 @@ package com.kidd.demos.java.util.concurrent;
 
 import org.testng.annotations.Test;
 
-import java.util.Queue;
 import java.util.concurrent.SynchronousQueue;
 import java.util.concurrent.atomic.AtomicInteger;
 

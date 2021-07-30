@@ -4,7 +4,6 @@ import lombok.extern.log4j.Log4j2;
 import org.testng.annotations.Test;
 
 import java.util.concurrent.locks.LockSupport;
-import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * @author Kidd
@@ -43,7 +42,7 @@ public class LockSupportTest {
                 log.info("t1 start");
                 log.info("t1 park");
                 LockSupport.park();
-                log.info("t1 unpark");
+                log.info("t1 unparked");
             }
         });
 
