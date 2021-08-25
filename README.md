@@ -2,8 +2,8 @@
 
 Demos是用于练手Java各种库的项目，使用Gradle构建，目前包含
 
-类库 | 说明 | 出品方
-- | - | -
+ 类库 | 说明 | 来源
+--- | --- | ---
 activeMQ | jms消息服务的实现 | apache
 aspectj | 切面编程框架
 aip | 百度AI开放平台 Java SDK | 百度
@@ -17,7 +17,7 @@ paho | MQTT消息的java实现
 设计模式 |
 Spring |
 vfs | 文件系统
-xstream | ThoughtWorks出品xml序列化/反序列化
+xstream | xml序列化/反序列化 | ThoughtWorks
 easyExcel | 阿里出品的excel读写库
 pdfbox | apache出品的pdf读写库
 
@@ -26,3 +26,4 @@ TODO:
 * FreeMarker
 * Groovy
 * aspectJ
+* Spring data jpa
