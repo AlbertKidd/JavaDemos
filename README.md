@@ -1,6 +1,6 @@
 # Demos
 
-Demos是用于练手Java各种库的项目，使用Gradle构建，目前包含
+Demos是用于练手Java各种库的项目，使用Maven构建，目前包含
 
  类库 | 说明 | 来源
 --- | --- | ---
